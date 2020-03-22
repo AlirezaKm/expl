@@ -2,7 +2,7 @@
 
 from pwn import *
 
-{# Add LIBC if pass it#}
+
 {% if LIBC %}LIBC = ELF('{{LIBC}}'){% endif %}
 context(arch='{{ARCH}}', os='{{OS}}', endian='{{ENDIAN}}', log_level='{{LOG_LEVEL}}')
 
