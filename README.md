@@ -26,8 +26,9 @@ pip install -e .
 #### Usage
 
 ```bash
-# Help
 $ expl
+```
+```text
 Usage: expl [OPTIONS] COMMAND [ARGS]...
 
 Options:
@@ -42,6 +43,8 @@ Commands:
 ##### More Info about commands
 ```bash
 $ expl local --help
+```
+```text
 Usage: expl local [OPTIONS] FILE
 
   Generate Local Template
