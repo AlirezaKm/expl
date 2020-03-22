@@ -3,12 +3,12 @@ import utils
 import os
 
 
-@click.group('Local')
-def local():
+@click.group('Local and Remote')
+def both():
     pass
 
 
-@local.command('local', help='Generate Local Template')
+@both.command('both', help='Generate a Template for Local and Remote')
 @click.option('-a', '--arch', 'ARCH', default='x86_64', help='Architecture of Executable File', show_default=True)
 @click.option('--os', 'OS', default='linux', help='OS of Executable File', show_default=True)
 @click.option('-e', '--endian', 'ENDIAN', default='little', help='OS of Executable File', show_default=True)
@@ -17,8 +17,12 @@ def local():
 @click.option('--libc', 'LIBC', help='Address of LIBC')
 @click.option('-o', '--output', 'OUTPUT', help='write to output')
 @click.argument('file')
+@click.argument('host')
+@click.argument('port')
 def command(
         file,
+        host,
+        port,
         ARCH,
         OS,
         ENDIAN,
@@ -32,8 +36,9 @@ def command(
         OS=OS,
         ENDIAN=ENDIAN,
         LOG_LEVEL=LOG_LEVEL,
-        EXEC_FILE=file if not REALPATH else os.path.abspath(file),
-        LOCAL=True,
+        HOST=host,
+        PORT=port,
+        EXEC_FILE=file if not REALPATH else os.path.abspath(file)
     )
 
     if LIBC:
