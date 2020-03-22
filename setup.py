@@ -2,12 +2,12 @@ from setuptools import setup, find_packages
 from os import path
 
 this_directory = path.abspath(path.dirname(__file__))
-with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
+with open(path.join(this_directory, 'README.md')) as f:
     long_description = f.read()
 
 setup(
     name='expl',
-    version='1.0.0',
+    version='1.0.1',
     packages=find_packages(exclude=['.venv', '.idea', 'build', 'dist', 'expl.egg-info']),
     url='https://github.com/AlirezaKm/expl',
     license='GPLv3',
