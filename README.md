@@ -79,7 +79,7 @@ def info(s):
     log.info(s)
 
 
-def exploit_(r):
+def exploit(r):
     r.interactive()
 
 
