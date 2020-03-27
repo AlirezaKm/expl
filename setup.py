@@ -7,7 +7,7 @@ with open(path.join(this_directory, 'README.md')) as f:
 
 setup(
     name='expl',
-    version='1.0.1',
+    version='1.0.2',
     packages=find_packages(exclude=['.venv', '.idea', 'build', 'dist', 'expl.egg-info']),
     url='https://github.com/AlirezaKm/expl',
     license='GPLv3',
