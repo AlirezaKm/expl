@@ -6,6 +6,22 @@ from pwn import *
 {% if LIBC %}LIBC = ELF('{{LIBC}}'){% endif %}
 context(arch='{{ARCH}}', os='{{OS}}', endian='{{ENDIAN}}', log_level='{{LOG_LEVEL}}')
 
+{% if HEAP %}
+def new(id, size, value):
+    pass
+
+
+def delete(id):
+    pass
+
+
+def show(id):
+    pass
+
+
+def edit(id, nValue):
+    pass
+{% endif %}
 
 def info(s):
     log.info(s)
@@ -26,14 +42,16 @@ if __name__ == '__main__':
     r = remote(HOST, PORT)
     exploit(r)
 {% else %} {# Local and Remote #}
+    # Show Splash Screen
+    splash()
+
     if len(sys.argv) > 1:
         HOST, PORT = "{{HOST}}", {{PORT}}
         r = remote(HOST, PORT)
-        exploit(r)
-
     else:
         r = process(['{{EXEC_FILE}}'])
         print(util.proc.pidof(r))
         pause()
-        exploit(r)
+
+    exploit(r)
 {% endif %}

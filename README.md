@@ -56,6 +56,7 @@ Options:
   -l, --loglevel TEXT  Log Level of pwntools  [default: info]
   -r, --realpath TEXT  using realpath for Executable File  [default: False]
   --libc TEXT          Address of LIBC
+  --heap               Adding heap functions
   -o, --output TEXT    write to output
   --help               Show this message and exit.
 ```

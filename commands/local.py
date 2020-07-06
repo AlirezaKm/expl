@@ -1,5 +1,5 @@
+from commands._base import common
 import click
-import utils
 import os
 
 
@@ -15,6 +15,7 @@ def local():
 @click.option('-l', '--loglevel', 'LOG_LEVEL', default='info', help='Log Level of pwntools', show_default=True)
 @click.option('-r', '--realpath', 'REALPATH', default=False, help='using realpath for Executable File', show_default=True)
 @click.option('--libc', 'LIBC', help='Address of LIBC')
+@click.option('--heap', 'HEAP', help='Adding heap functions', is_flag=True, default=False)
 @click.option('-o', '--output', 'OUTPUT', help='write to output')
 @click.argument('file')
 def command(
@@ -24,6 +25,7 @@ def command(
         ENDIAN,
         LOG_LEVEL,
         LIBC,
+        HEAP,
         OUTPUT,
         REALPATH
 ):
@@ -39,9 +41,7 @@ def command(
     if LIBC:
         args.update(LIBC=LIBC)
 
-    data = utils.render(utils.TEMPLATES.MAIN, **args)
-    if OUTPUT:
-        open(OUTPUT, 'w').write(data)
-        click.echo("[*] Stored in file '{}'".format(OUTPUT))
-    else:
-        click.echo(data)
+    if HEAP:
+        args.update(HEAP=HEAP)
+
+    common(OUTPUT, args)
