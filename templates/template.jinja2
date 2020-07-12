@@ -2,24 +2,23 @@
 
 from pwn import *
 
-
 {% if LIBC %}LIBC = ELF('{{LIBC}}'){% endif %}
 context(arch='{{ARCH}}', os='{{OS}}', endian='{{ENDIAN}}', log_level='{{LOG_LEVEL}}')
 
 {% if HEAP %}
-def new(id, size, value):
+def alloc(value):
     pass
 
 
-def delete(id):
-    pass
-
-
-def show(id):
+def read(id):
     pass
 
 
 def edit(id, nValue):
+    pass
+
+
+def free(id):
     pass
 {% endif %}
 
